@@ -64,16 +64,32 @@ public class SAE_1_AUSSENAC_BENSEDIK_GIARDPELLAT{
 
     //FONCTIONS MANCHE 1
 
-    public static void saisieTemps(int[][] tabTemps){
-
+    public static void saisieTemps(int[][] tabTemps, int longueurPiste){
+        for(int i=0;i<tabTemps.length;i++){
+            tabTemps[i][0]=saisieIntMin(0,"Quel temps le numéro "+i+"a t'il fait ? (en millisecondes");
+            if((longueurPiste<600 && tabTemps[i][0]>120000) || (longueurPiste>=600 && tabTemps[i][0]>180000))
+                tabTemps[i][1]=1;
+        }
     }
 
-    public static void saisieRefusChute(int[][] tabTemps,int nbBarres){
+    public static void saisieRefusChute(int[][] tabTemps){
         for(int i=0;i<tabTemps.length;i++){
             if(saisieIntMin(0,"Combien de refus a-t'il subit ?")>2)
                 tabTemps[i][1]=1;
             if(saisieIntMin(0,"Combien de fois est-il tombé ?")<0)
                 tabTemps[i][1]=1;
+        }
+    }
+
+    public static void saisieNbBarresTombes(int[][] tabTemps,int nbBarres){
+        for(int i=0;i<tabTemps.length;i++)
+            tabTemps[i][0]+=saisieInt(0,nbBarres,"Combien de barres le numéro"+i+" a-t'il fait tombé ?")*8000;
+    }
+
+
+    public static void afficheResultatsManche1(int[][] tabTemps){
+        for(int i=0;i<tabTemps.length;i++){
+            System.out.println("Le numéro "+i+" a éffectué un temps de "+tabTemps[i][0]+" et "+(tabTemps[i][1]==1 ? "est éliminé." : "passe à la deuxième manche !"));
         }
     }
 
@@ -91,7 +107,11 @@ public class SAE_1_AUSSENAC_BENSEDIK_GIARDPELLAT{
         int nbBarres=saisieNbBarres(nbObstacles);
 
         //SAISIE MANCHE 1
+        saisieTemps(tabTemps, longueurPiste);
+        saisieRefusChute(tabTemps);
+        saisieNbBarresTombes(tabTemps, nbBarres);
 
+        //AFFICHAGE RESULTATS MANCHE 1
 
     }
 }
