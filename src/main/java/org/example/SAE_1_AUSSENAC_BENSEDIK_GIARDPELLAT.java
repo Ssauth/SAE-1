@@ -5,7 +5,10 @@ import java.util.Scanner;
 public class SAE_1_AUSSENAC_BENSEDIK_GIARDPELLAT{
 
     //FONCTIONS UTILITAIRES
-    //AUSSENAC Thomas
+
+    //Cette fonction permet d'afficher le contenue d'un tableau d'entier sous forme d'un String (servait pour les tests)
+    //Il prend en paramètre un tableau d'entier
+    // AUSSENAC Thomas
     public static String afficherTabInt(int[][] toujoursRatioCypris){
         String retour="";
         for(int i=0;i<toujoursRatioCypris.length;i++){
@@ -15,7 +18,9 @@ public class SAE_1_AUSSENAC_BENSEDIK_GIARDPELLAT{
         }
         return retour;
     }
-
+    //Cette fonction permet une saisie controlé avec un minimum et un maximum accompagner d'un String pour demander une donnée précise à l'utilisateur
+    //Paramètres : entier minimum, entier maximum et une chaine de caractère pour le message affiché
+    // AUSSENAC Thomas
     public static int saisieInt(int min, int max, String message){
         Scanner scanner=new Scanner(System.in);
         System.out.println(message);
@@ -26,8 +31,9 @@ public class SAE_1_AUSSENAC_BENSEDIK_GIARDPELLAT{
         }
         return nb;
     }
-    //AUSSENAC Thomas
-
+    //Cette fonction permet une saisie controlé avec un minimum accompagner d'un String pour demander une donnée précise à l'utilisateur
+    //Paramètres : entier minimum et une chaine de caractère pour le message affiché
+    // AUSSENAC Thomas
     public static int saisieIntMin(int min, String message){
         Scanner scanner=new Scanner(System.in);
         System.out.println(message);
@@ -41,17 +47,22 @@ public class SAE_1_AUSSENAC_BENSEDIK_GIARDPELLAT{
 
 
     //FONCTIONS EPREUVE
-    //BENSEDIK Cypris
 
+    //Cette méthode demande la saisie d'un entier entre 0 et 50 puis renvoi un tableau à double entrée de taille [n][2]
+    //Cette méthode n'a pas de paramètres et renvoie un tableau d'entier
+    //BENSEDIK Cypris
     public static int[][] saisieNbParticipants(){
         return new int[saisieInt(0,50,"Combien y a t'il de participants dans la course ? [0;50]")][2];
     }
+
+
     //GIARD--PERLLAT
 
     public static int saisieTailleCourse(){
         return saisieIntMin(0,"Quelle est la longueur de la piste ?");
     }
 
+    // AUSSENAC Thomas
     public static int saisieNbObstacle(int longueurPiste){
         return saisieInt(0,longueurPiste/5, "Combien y a t'il d'obstacles ? [0;"+longueurPiste/5+"]");
     }
@@ -64,6 +75,8 @@ public class SAE_1_AUSSENAC_BENSEDIK_GIARDPELLAT{
 
 
     //FONCTIONS MANCHES
+
+    // AUSSENAC Thomas
     public static void saisieRefusChute(int[][] tabTemps, int nbManche){
         for(int i=0;i<tabTemps.length;i++){
             if(tabTemps[i][1]==0){
@@ -75,6 +88,7 @@ public class SAE_1_AUSSENAC_BENSEDIK_GIARDPELLAT{
         }
     }
 
+    // AUSSENAC Thomas
     public static void saisieNbBarresTombes(int[][] tabTemps,int nbBarres, int nbManche){
         for(int i=0;i<tabTemps.length;i++)
             if(tabTemps[i][1]==0){
@@ -82,10 +96,12 @@ public class SAE_1_AUSSENAC_BENSEDIK_GIARDPELLAT{
             }
     }
 
+    // AUSSENAC Thomas
     public static void saisieTemps(int[][] tabTemps, int longueurPiste, int nbManche){
+        int tempsManche;
         for(int i=0;i<tabTemps.length;i++){
             if(tabTemps[i][1]==0){
-                tabTemps[i][0]=saisieIntMin(0, "Lors de la "+(nbManche==1 ? "première " : "seconde ")+"manche ,quel temps le numéro "+i+"a t'il fait ? (en millisecondes");
+                tabTemps[i][0]+=saisieIntMin(0, "Lors de la "+(nbManche==1 ? "première " : "seconde ")+"manche ,quel temps le numéro "+i+"a t'il fait ? (en millisecondes");
                 if((longueurPiste<600 && tabTemps[i][0]>120000) || (longueurPiste>=600 && tabTemps[i][0]>180000))
                     tabTemps[i][1]=1;
             }
@@ -93,6 +109,7 @@ public class SAE_1_AUSSENAC_BENSEDIK_GIARDPELLAT{
     }
 
 
+    // AUSSENAC Thomas
     public static void afficheResultatsManche1(int[][] tabTemps){
         for(int i=0;i<tabTemps.length;i++){
             System.out.println("Le numéro "+i+" a éffectué un temps de "+tabTemps[i][0]+" et "+(tabTemps[i][1]==1 ? "est éliminé." : "passe à la deuxième manche !"));
@@ -101,8 +118,10 @@ public class SAE_1_AUSSENAC_BENSEDIK_GIARDPELLAT{
 
     //PODIUM
 
+
+    // AUSSENAC Thomas
     public static void afficherPodium(int[][] tabTemps){
-        int nb1 = 180001,nb2 = 180001,nb3 = 180001, compteur=0;
+        int nb1 = 360001,nb2 = 360001,nb3 = 360001, compteur=0;
         String retour="A la première place ce trouve : ";
         for(int i=0;i<tabTemps.length;i++){
             if(tabTemps[i][0]<nb3){
@@ -120,6 +139,8 @@ public class SAE_1_AUSSENAC_BENSEDIK_GIARDPELLAT{
                 }
             }
         }
+
+        //Gestion des cas d'égalités
         for(int i=0;i<tabTemps.length;i++){
             if(tabTemps[i][0]==nb1){
                 retour+=i+" ";
@@ -143,9 +164,6 @@ public class SAE_1_AUSSENAC_BENSEDIK_GIARDPELLAT{
                 }
             }
         }
-        System.out.println(nb1);
-        System.out.println(nb2);
-        System.out.println(nb3);
         System.out.println(retour);
     }
 
@@ -157,7 +175,6 @@ public class SAE_1_AUSSENAC_BENSEDIK_GIARDPELLAT{
 
     public static void main(String[] args){
         //SAISIE POUR EPREUVE
-        /*
         int[][] tabTemps=saisieNbParticipants();
         int longueurPiste=saisieTailleCourse();
         int nbObstacles=saisieNbObstacle(longueurPiste);
@@ -177,19 +194,9 @@ public class SAE_1_AUSSENAC_BENSEDIK_GIARDPELLAT{
         saisieTemps(tabTemps, longueurPiste,2);
         saisieRefusChute(tabTemps,2);
         saisieNbBarresTombes(tabTemps, nbBarres,2);
-        */
 
-        int[][] test=new int[15][2];
-        for(int i=0;i<test.length;i++)
-            test[i][0]=(int)  (Math.random()*10000);
-        test[5][0]=150;
-        test[6][0]=150;
-        test[7][0]=150;
-        test[8][0]=150;
-
-        System.out.println(afficherTabInt(test));
-
-        afficherPodium(test);
+        //AFFICHAGE PODIUM
+        afficherPodium(tabTemps);
 
 
 
