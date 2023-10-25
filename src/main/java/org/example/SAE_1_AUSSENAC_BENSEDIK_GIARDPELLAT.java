@@ -112,6 +112,9 @@ public class SAE_1_AUSSENAC_BENSEDIK_GIARDPELLAT{
         saisieNbBarresTombes(tabTemps, nbBarres);
 
         //AFFICHAGE RESULTATS MANCHE 1
+        afficheResultatsManche1(tabTemps);
+
+        //SAISIE MANCHE 2
 
     }
 }
