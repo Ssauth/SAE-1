@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="677670c9-ffc3-41ae-b42d-49b5f719b963" name="Changes" comment="Tout fini comment je suis trop fort">
+    <list default="true" id="677670c9-ffc3-41ae-b42d-49b5f719b963" name="Changes" comment="Commentaire en cours">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SAE_1_AUSSENAC_BENSEDIK_GIARDPELLAT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SAE_1_AUSSENAC_BENSEDIK_GIARDPELLAT.java" afterDir="false" />
     </list>
@@ -56,7 +56,8 @@
       <workItem from="1698063611824" duration="6506000" />
       <workItem from="1698080126057" duration="2029000" />
       <workItem from="1698239308198" duration="2233000" />
-      <workItem from="1698242696424" duration="3359000" />
+      <workItem from="1698242696424" duration="3379000" />
+      <workItem from="1698407992174" duration="592000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1698068699473</created>
@@ -93,7 +94,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698245139464</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Commentaire en cours">
+      <created>1698246414763</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1698246414763</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -115,6 +123,7 @@
     <MESSAGE value="Manche une fini" />
     <MESSAGE value="Manche une fini //SAISIE MANCHE 2" />
     <MESSAGE value="Tout fini comment je suis trop fort" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tout fini comment je suis trop fort" />
+    <MESSAGE value="Commentaire en cours" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commentaire en cours" />
   </component>
 </project>

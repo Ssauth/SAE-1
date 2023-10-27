@@ -92,7 +92,7 @@ public class SAE_1_AUSSENAC_BENSEDIK_GIARDPELLAT{
     public static void saisieNbBarresTombes(int[][] tabTemps,int nbBarres, int nbManche){
         for(int i=0;i<tabTemps.length;i++)
             if(tabTemps[i][1]==0){
-                tabTemps[i][0]+=saisieInt(0, nbBarres, "Lors de la "+(nbManche==1 ? "première " : "seconde ")+"manche, combien de barres le numéro"+i+" a-t'il fait tombé ?")*8000;
+                tabTemps[i][0]+=saisieInt(0, nbBarres, "Lors de la "+(nbManche==1 ? "première " : "seconde ")+"manche, combien de barres le numéro "+i+" a-t'il fait tombé ?")*8000;
             }
     }
 
@@ -101,8 +101,9 @@ public class SAE_1_AUSSENAC_BENSEDIK_GIARDPELLAT{
         int tempsManche;
         for(int i=0;i<tabTemps.length;i++){
             if(tabTemps[i][1]==0){
-                tabTemps[i][0]+=saisieIntMin(0, "Lors de la "+(nbManche==1 ? "première " : "seconde ")+"manche ,quel temps le numéro "+i+"a t'il fait ? (en millisecondes");
-                if((longueurPiste<600 && tabTemps[i][0]>120000) || (longueurPiste>=600 && tabTemps[i][0]>180000))
+                tempsManche=saisieIntMin(0, "Lors de la "+(nbManche==1 ? "première " : "seconde ")+"manche ,quel temps le numéro "+i+" a t'il fait ? (en millisecondes)");
+                tabTemps[i][0]+=tempsManche;
+                if((longueurPiste<600 && tempsManche>120000) || (longueurPiste>=600 && tempsManche>180000))
                     tabTemps[i][1]=1;
             }
         }
@@ -124,7 +125,7 @@ public class SAE_1_AUSSENAC_BENSEDIK_GIARDPELLAT{
         int nb1 = 360001,nb2 = 360001,nb3 = 360001, compteur=0;
         String retour="A la première place ce trouve : ";
         for(int i=0;i<tabTemps.length;i++){
-            if(tabTemps[i][0]<nb3){
+            if(tabTemps[i][0]<nb3 && tabTemps[i][1]!=1){
                 if(tabTemps[i][0]<nb2){
                     if(tabTemps[i][0]<nb1){
                         nb3=nb2;
@@ -142,7 +143,7 @@ public class SAE_1_AUSSENAC_BENSEDIK_GIARDPELLAT{
 
         //Gestion des cas d'égalités
         for(int i=0;i<tabTemps.length;i++){
-            if(tabTemps[i][0]==nb1){
+            if(tabTemps[i][0]==nb1 && tabTemps[i][1]!=1){
                 retour+=i+" ";
                 compteur++;
             }
@@ -150,7 +151,7 @@ public class SAE_1_AUSSENAC_BENSEDIK_GIARDPELLAT{
         if(compteur<3){
             retour+="\nA la seconde place ce trouve : ";
             for(int i=0;i<tabTemps.length;i++){
-                if(tabTemps[i][0]==nb2){
+                if(tabTemps[i][0]==nb2 && tabTemps[i][1]!=1){
                     retour+=i+" ";
                     compteur++;
                 }
@@ -159,7 +160,7 @@ public class SAE_1_AUSSENAC_BENSEDIK_GIARDPELLAT{
         if(compteur<3){
             retour+="\nA la troisième place ce trouve : ";
             for(int i=0;i<tabTemps.length;i++){
-                if(tabTemps[i][0]==nb3){
+                if(tabTemps[i][0]==nb3 && tabTemps[i][1]!=1){
                     retour+=i+" ";
                 }
             }
@@ -181,19 +182,19 @@ public class SAE_1_AUSSENAC_BENSEDIK_GIARDPELLAT{
         int nbBarres=saisieNbBarres(nbObstacles);
 
         //SAISIE MANCHE 1
-        System.out.println("Début de la première mannche.");
-        saisieTemps(tabTemps, longueurPiste,1);
+        System.out.println("Début de la première manche.");
         saisieRefusChute(tabTemps,1);
         saisieNbBarresTombes(tabTemps, nbBarres,1);
+        saisieTemps(tabTemps, longueurPiste,1);
 
         //AFFICHAGE RESULTATS MANCHE 1
         afficheResultatsManche1(tabTemps);
 
         //SAISIE MANCHE 2
-        System.out.println("Début de la seconde mannche.");
-        saisieTemps(tabTemps, longueurPiste,2);
+        System.out.println("Début de la seconde manche.");
         saisieRefusChute(tabTemps,2);
         saisieNbBarresTombes(tabTemps, nbBarres,2);
+        saisieTemps(tabTemps, longueurPiste,2);
 
         //AFFICHAGE PODIUM
         afficherPodium(tabTemps);
